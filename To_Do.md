@@ -2,6 +2,8 @@
 
 ## Document environment settings
 
+## Add gitignore
+
 ## Document hydra settings
 
 ## Run example of Alex
