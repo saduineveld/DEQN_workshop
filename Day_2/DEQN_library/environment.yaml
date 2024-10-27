@@ -1,4 +1,4 @@
-name: base
+name: DEQN_fork
 channels:
   - spyder-ide
   - conda-forge
