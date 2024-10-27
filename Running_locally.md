@@ -9,16 +9,19 @@
 - installing the same package with pip using venv should also work
 
 
-## Creating environment "DEQN_fork" from DEQN.yaml using conda
-conda env create -f DEQN_fork.yaml
-conda activate DEQN_fork
+## Creating environment "env_tf212_p311" from DEQN.yaml using conda
+conda env create -f env_tf212_p311.yaml
+conda activate env_tf212_p311
 
-## Creating environment similar to DEQN_fork from scath using conda
+## Creating environment similar to env_tf212_p311 from scath using conda
 - packages to install are (in brackets the versions I installed):
 python (3.11.9)
 tensorflow (2.12)
+XX hydra, yaml, packaging? add conda-forge channel? XX
+
 Note: it's best to first install packages that can be installed with conda, and then install the packages that can only be installed through pip
 - conda create --<environment_name> (create environment)
 - conda activate <environment_name>
 - conda install python==3.11.9
+
 - pip install tensorflow==2.12
