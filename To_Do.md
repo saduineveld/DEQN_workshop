@@ -1,10 +1,6 @@
 # To Do List
 
-## Document environment settings
-
-## Add gitignore
-
-## Document hydra settings
+## Set &  document hydra settings
 
 ## Run example of Alex
 - check output (tensorboard, hydra)
