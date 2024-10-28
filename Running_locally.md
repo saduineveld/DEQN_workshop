@@ -8,20 +8,22 @@
 - below I describe how to create this environment yourself using conda
 - installing the same package with pip using venv should also work
 
-
 ## Creating environment "env_tf212_p311" from DEQN.yaml using conda
 conda env create -f env_tf212_p311.yaml
 conda activate env_tf212_p311
 
-## Creating environment similar to env_tf212_p311 from scath using conda
-- packages to install are (in brackets the versions I installed):
-python (3.11.9)
-tensorflow (2.12)
+## Creating environment from scath using conda
+- use "conda install <packagename>" (and not "pip install") to install packages, because conda tracks packages to ensure compatibility
+- add the conda-forge channel (conda-forge channel in general has more version options than the default channel)
+- packages to install are (in brackets the latest compatible versions, as of 28.10.24, conda-forge supports for windows at the moment):
+python (3.10)
+tensorflow (2.10)
+hydra-core (1.3.2)
 XX hydra, yaml, packaging? add conda-forge channel? XX
 
 Note: it's best to first install packages that can be installed with conda, and then install the packages that can only be installed through pip
 - conda create --<environment_name> (create environment)
 - conda activate <environment_name>
-- conda install python==3.11.9
-
-- pip install tensorflow==2.12
+- conda install python==3.10
+- conda install tensorflow==2.10
+- conda install hydra-core
