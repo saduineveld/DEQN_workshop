@@ -7,6 +7,15 @@
 - I created a base environment (DEQN_fork.yaml) using conda. This has been tested for the models: bm1972 
 - below I describe how to create this environment yourself using conda
 - you can set the folder where hydra puts the output (I adjusted this to a folder outside the repository)
+- to analyze with tensorboard: tensorboard --logdir='Day_2/DEQN_library/runs/bm1972/2024-10-29/10-13-16'
+
+My runs:
+in runs: 
+tensorboard --logdir='Day_2/DEQN_library/runs/bm1972/2024-10-29/10-13-16'
+tensorboard --logdir='Day_2/DEQN_library/runs/dice/2024-09-04/07-23-04'
+in HYDRA_OUTPUT: 
+tensorboard --logdir='bm1972/2024-10-28/11-50-30'
+
 
 ## Creating environment DEQN_fork from yaml using conda
 conda env create -f DEQN_fork.yaml

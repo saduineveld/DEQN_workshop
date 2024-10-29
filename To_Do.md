@@ -1,6 +1,6 @@
 # To Do List
 
-## Set &  document hydra settings
+## Set & document hydra settings
 
 ## Run example of Alex
 - check output (tensorboard, hydra)
