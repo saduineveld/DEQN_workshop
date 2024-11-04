@@ -23,14 +23,16 @@ conda activate DEQN_fork
 
 ## Creating environment from scrath using conda
 - use "conda install <packagename>" (and not "pip install") to install packages, because conda tracks packages to ensure compatibility
-- add the conda-forge channel (conda-forge channel in general has more version options than the default channel)
+- add the conda-forge channel (conda-forge channel in general has more version options than the default channel): 
 - packages to install are (in brackets the latest compatible versions, as of 28.10.24, conda-forge supports for windows at the moment):
 python (3.10)
 tensorflow (2.10)
 hydra-core (1.3.2)
 
+- conda config --add channels conda-forge
 - conda create --<environment_name> # create environment
 - conda activate <environment_name> # activate environment
 - conda install python==3.10
 - conda install tensorflow==2.10
 - conda install hydra-core
+- conda install jupyter
