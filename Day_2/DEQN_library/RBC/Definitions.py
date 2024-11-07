@@ -13,8 +13,6 @@ def get_ss():
     hss = omega**(1/(1-alpha))*kss
     return kss,css,hss
 
-
-
 # Next periods capital
 def get_Kn(state, policy_state):
     """ Capital in next period, given state & policy """
