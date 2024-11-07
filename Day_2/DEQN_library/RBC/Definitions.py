@@ -13,33 +13,39 @@ def get_ss():
     hss = omega**(1/(1-alpha))*kss
     return kss,css,hss
 
-def H_t(state, policy_state):
-    """compute output today"""
-    _K_t = State.K_t(state)
-    _C_t = PolicyState.C_t(policy_state)
-    _Y_t = _K_t ** alpha
-    return _Y_t
 
 
-# Model subfunctions
-def marg_ut(cc):
-    dudc = cc**-nu
-    return dudc
+# Next periods capital
+def get_Kn(state, policy_state):
+    """ Capital in next period, given state & policy """
+    _Kt = State.K_t(state)
+    _Zt = get_Zt(state)
+    _Ct = PolicyState.C_t(policy_state)
+    _Ht = get_Ht(_Zt,_Kt,_Ct)
+    _Kn = prod(_Zt,_Kt,_Ht) + (1-delta)*_Kt - _Ct
+    return _Kn
 
-def labour(zt,kt,ct):
-    ht = ((1-alpha/chi)*ct**-nu*zt*kt**alpha)**(eta/(1+alpha*eta))
-    return ht
+def get_Zt(state):
+    """Take exponent of log(Zt)"""
+    _Zt = tf.math.exp(lZt(state))
+    return _Zt
 
-def knext(zt,kt,ht,ct):
-    kn = prod(alpha,zt,kt,ht)[0] + (1-delta)*kt - ct
-    return kn
+# Model subfunctions (no state or policy)
+def get_Ht(Zt,Kt,Ct):
+    """Labour supply"""
+    Ht = ((1-alpha/chi)*Ct**-nu*Zt*Kt**alpha)**(eta/(1+alpha*eta))
+    return Ht
 
-def cons(azt,kt,ht,kn):
-    ct = prod(alpha,zt,kt,ht) + (1-delta)*kt - kn
-    return ct
+def marg_ut(Ct):
+    dUdC = Ct**-nu
+    return dUdC
 
-def prod(zt,kt,ht): 
-    yt = zt*kt**alpha*ht**(1-alpha)
-    rt = alpha*yt/kt
-    wt = (1-alpha)*yt/ht
-    return yt,rt,wt
+def get_Ct(Zt,Kt,Ht,Kn):
+    Ct = prod(Zt,Kt,Ht) + (1-delta)*Kt - Kn
+    return Ct
+
+def prod(Zt,Kt,Ht): 
+    Yt = Zt*Kt**alpha*Ht**(1-alpha)
+    #Rt = alpha*Yt/Kt
+    #Wt = (1-alpha)*Yt/Ht
+    return Yt#,Rt,Wt
