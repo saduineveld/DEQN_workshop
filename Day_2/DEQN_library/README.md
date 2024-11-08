@@ -187,7 +187,7 @@ To add a new model, the following needs to be done:
 1. Create a folder for the model
 2. Add a `Dynamics.py` file. This should define the following (for an example see the analytic or sudden_stop models):
    - a variable called `shock_values`: This should be a tensor where rows are possible outcomes used for quadrature approximation
-   - a variable called and `schock_probs`: this should contain the associated probabilities
+   - a variable called and `shock_probs`: this should contain the associated probabilities
    - A function called `total_step_spec_shock`: this should take two inputs: previous state and previous policy value. It applies
    the specific shock index and returns the state assuming the given shock has happened. Used for conditional expectation.
    - A function called `total_step_random`: this should take two inputs: previous state and previous policy value. It applies

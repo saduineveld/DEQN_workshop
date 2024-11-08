@@ -16,7 +16,7 @@ def get_ss():
     return kss,css,hss
 
 # Next periods capital
-def get_Kn(state, policy_state):
+def get_lKn(state, policy_state):
     """ Capital in next period, given state & policy """
     _Kt = get_Kt(state)
     _Zt = get_Zt(state)
@@ -25,8 +25,8 @@ def get_Kn(state, policy_state):
     _Ht = get_Ht(_Zt,_Kt,_Ct)
     _Yt = get_Yt(_Zt,_Kt,_Ht)
 
-    _Kn = _Yt + (1-delta)*_Kt - _Ct
-    return _Kn
+    _lKn = tf.math.log(_Yt + (1-delta)*_Kt - _Ct)
+    return _lKn
 
 # RHS of Euler in period t(!!)
 def get_RHSt(state, policy_state):
