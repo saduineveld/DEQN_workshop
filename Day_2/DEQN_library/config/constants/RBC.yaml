@@ -1,0 +1,14 @@
+constants:
+    alpha:    0.36
+    beta:     0.985
+    delta:    0.025
+    nu:       2
+    eta:      4        
+    rho_z:    0.95
+    sigma_z:  0.01
+    chi:      1
+    zss:      1
+
+  # Initial states:
+    lK0:      2.9 
+    lZ0:      0       
