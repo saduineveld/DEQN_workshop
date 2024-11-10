@@ -46,9 +46,9 @@ def shock_step_spec_shock(prev_state, shock_index):
     _shock_step = tf.zeros_like(prev_state)  # Initialization
 
     # Next line doesnt do anything when shock_values = [0.0] 
-    _shock_step = State.update(
-        _shock_step, 'lZt', sigma_z * tf.repeat(
-            shock_values[shock_index, 0], prev_state.shape[0]))
+    #_shock_step = State.update(
+     #   _shock_step, 'lZt', sigma_z * tf.repeat(
+      #      shock_values[shock_index, 0], prev_state.shape[0]))
     return _shock_step
 
 def AR_step(prev_state):
@@ -62,7 +62,7 @@ def policy_step(prev_state, policy_state):
     """Update state variables."""
     _policy_step = tf.zeros_like(prev_state)  # Initialization
     _policy_step = State.update(
-        _policy_step, 'lK_t', Definitions.get_lKn(prev_state, policy_state))
+        _policy_step, 'lKt', Definitions.get_lKn(prev_state, policy_state))
 
 #     _random_uniform = Parameters.rng.uniform([prev_state.shape[0], 1])
 #     _policy_step = State.update(

@@ -10,7 +10,7 @@ defaults:
   - variables: RBC
 seed: 42 #42
 # can be NEW, LATEST, or a given checkpoint filename
-STARTING_POINT: NEW
+STARTING_POINT: LATEST
 CHECKPOINT_INTERVAL: 2
 MAX_TO_KEEP_NUMBER: 10
 MODEL_NAME: RBC

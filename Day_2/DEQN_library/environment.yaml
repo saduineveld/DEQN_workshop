@@ -1,4 +1,4 @@
-name: DEQN_fork
+name: DEQN_lib
 channels:
   - spyder-ide
   - conda-forge

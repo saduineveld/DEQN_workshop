@@ -22,15 +22,16 @@ policies:
 
 
 definitions:
+#  - name: get_ss #get steady state
   - name: get_lKn #capital next period (in logs)
   - name: get_RHSt # "right-hand-side of Euler (but in period t!)
   - name: get_Kt  #take exponent of lKt
   - name: get_Zt  #take exponent lZt
   - name: get_Ct  #take exponent lCt
-  - name: get_Ht # Labour supply
-  - name: marg_ut # marginal utility
-  - name: Y_t  # Output
-  - name: R_t # Marg. productivity of capital
-  - name: get_ss #get steady state
+  - name: get_marg_ut # Labour supply
+  - name: get_Ht # marginal utility as function of state & policy state
+  - name: get_Yt  # Output
+  - name: get_Rt # Marg. productivity of capital
+
 
 
