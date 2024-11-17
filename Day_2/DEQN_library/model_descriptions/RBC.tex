@@ -1,0 +1,143 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[british]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Standard RBC model}
+\maketitle
+
+\section{Model}\label{sec:Full-model-description}
+
+A standard Real Business Cycle (RBC) model with a representative agent
+including labour supply choice. The objective function of the agent
+is:
+
+\begin{align*}
+\max\: & E_{1}\underset{{\scriptstyle t=1}}{\overset{{\scriptstyle \infty}}{\sum}}\beta^{t-1}\left\{ \frac{C_{t}^{1-\nu}}{1-\nu}-\chi\frac{H_{t}^{1+\frac{1}{\eta}}}{1+\frac{1}{\eta}}\right\} 
+\end{align*}
+
+\noindent where $C_{t}$ is period $t$ consumption, and $H_{t}$
+is period $t$ labor supply. The real budget constraint is:
+
+\begin{align}
+C_{t}+K_{t+1} & =Z_{t}K_{t}^{\alpha}H_{t}^{1-\alpha}+\left(1-\delta\right)K_{t}\label{eq:Budget_constraint}
+\end{align}
+
+\noindent where $K_{t}$ is the capital stock at the beginning of
+period $t$, and $\delta$ is the depreciation rate of capital. Total
+Factor Productivity (TFP) $Z_{t}$ evolves by an exogenous process:
+
+\begin{align}
+z_{t} & =\rho_{z}z_{t-1}+\sigma_{z}\epsilon_{t}\label{eq:TFP_process}
+\end{align}
+
+\noindent where $z_{t}=\log\left(Z_{t}\right)$, $\rho_{z}$ is the
+autocorrelation coefficient, and $\sigma_{z}$ is the standard deviation
+of the shocks. The shocks $\epsilon_{t}$ are standard normally distributed
+($\epsilon_{t}\sim\mathcal{N}\left(0,1\right)$).
+
+The optimization problem can be written with an infinite Lagrangian:
+
+$\mathcal{L}=E\overset{{\scriptscriptstyle \infty}}{\underset{{\scriptscriptstyle t=1}}{\sum}}\beta^{t}\left\{ \frac{C_{t}^{1-\nu}}{1-\nu}-\chi\frac{H_{t}^{1+\frac{1}{\eta}}}{1+\frac{1}{\eta}}+\lambda_{t}\left[Z_{t}K_{t}^{\alpha}H_{t}^{1-\alpha}+\left(1-\delta\right)K_{t}-C_{t}-K_{t+1}\right]\right\} $
+
+\noindent where $\lambda_{t}$ is the shadow price of the budget constraint,
+and $K_{1}$ is given. Maximization of this Lagrangian with respect
+to hours $H_{t}$, consumption $C_{t}$ and capital in next period
+$K_{t+1}$ yields the following First Order Conditions:
+
+\begin{align*}
+C_{t}^{-\nu} & =\lambda_{t}\\
+\chi H_{t}^{\frac{1}{\eta}} & =\lambda_{t}Z_{t}\left(1-\alpha\right)K_{t}^{\alpha}H_{t}^{-\alpha}\\
+\lambda_{t} & =\beta\lambda_{t+1}\left[F_{k}\left(K_{t},H_{t}\right)+1-\delta\right]
+\end{align*}
+
+Substituting out $\lambda$ gives:
+
+\begin{align}
+\chi H_{t}^{\frac{1}{\eta}} & =C_{t}^{-\nu}Z_{t}\left(1-\alpha\right)K_{t}^{\alpha}H_{t}^{-\alpha}\label{eq:Lab_supply}\\
+C_{t}^{-\nu} & =\beta E_{t}\left\{ C_{t+1}^{-\nu}\left[Z_{t+1}\alpha K_{t+1}^{\alpha-1}H_{t+1}^{1-\alpha}+1-\delta\right]\right\} \label{eq:Euler_eq}
+\end{align}
+
+\noindent We can derive a (log linear) analytical expression for labor
+supply, given capital, TFP and consumption using (\ref{eq:Lab_supply}):
+
+\begin{align}
+H_{t} & =\left[\frac{1-\alpha}{\chi}C_{t}^{-\nu}Z_{t}K_{t}^{\alpha}\right]^{\frac{\eta}{1+\alpha\eta}}\label{eq:RBC_lab_sol}
+\end{align}
+
+
+\section{Gauss-Hermite quadrature}\label{sec:RBC_quadrature}
+
+The general rule for Gaussian-Hermite approximation is:
+
+\begin{align}
+\intop_{-\infty}^{\infty}\exp\left(-z^{2}\right)g\left(z\right)dz & \approx\sum_{j=1}^{J}\omega_{j}g\left(\zeta_{j}\right)\label{eq:Gauss-Hermite-gen}
+\end{align}
+
+\noindent with Gauss-Hermite nodes $j=1,...,J$, roots $\zeta_{j}$
+and weights $\omega_{j}$.
+
+Assume we have a function $f\left(z_{t+1},x\right)$ with exogenous
+variable $z_{t+1}$. This variable evolves according to (\ref{eq:TFP_process})
+with standard normally distributed shocks $\epsilon_{t+1}\sim\mathcal{N}\left(0,1\right)$.
+The expected value of this function is:
+
+\begin{align}
+E_{t}f\left(z_{t+1},x\right) & =\intop_{-\infty}^{\infty}f\left(\rho_{z}z_{t}+\sigma_{z}\epsilon_{t+1},x\right)\frac{1}{\sqrt{2\pi}}\exp\left(-\epsilon_{t+1}^{2}/2\right)d\epsilon_{t+1}\label{eq:GH_gen2}
+\end{align}
+
+To write (\ref{eq:GH_gen2}) in the same form as (\ref{eq:Gauss-Hermite-gen})
+we need a change of variable $\phi=\frac{\epsilon_{t+1}}{\sqrt{2}}$,
+such that $\exp\left(-\epsilon_{t+1}^{2}/2\right)=\exp\left(-\phi^{2}\right)$.
+The approximation of the integral is:
+
+\begin{multline*}
+\intop_{-\infty}^{\infty}f\left(\rho_{z}z_{t}+\sigma_{z}\sqrt{2}\phi,x\right)\frac{1}{\sqrt{2\pi}}\exp\left(\phi\right)\sqrt{2}d\phi\\
+\approx\sum_{j=1}^{J}\frac{\omega_{j}}{\sqrt{\pi}}f\left(\rho_{z}z_{t}+\sigma_{z}\sqrt{2}\zeta_{j},x\right)
+\end{multline*}
+
+\noindent where the extra term$\sqrt{2}$ (before $d\phi$) follows
+from integration by substitution.
+
+\section{Steady state}\label{sec:RBC_steady-state}
+
+To derive the analytical steady state we start with the Euler equation
+(\ref{eq:Euler_eq}):
+
+\begin{align*}
+\overline{C}^{-\nu} & =\beta\left\{ \overline{C}^{-\nu}\left[\overline{Z}\alpha\overline{K}^{\alpha-1}H^{1-\alpha}+1-\delta\right]\right\} \\
+\overline{H} & =\left[\frac{1-\beta\left(1-\delta\right)}{\overline{Z}\alpha\beta}\right]^{\frac{1}{1-\alpha}}\overline{K}=\Omega^{\frac{1}{1-\alpha}}\overline{K}
+\end{align*}
+
+\noindent with $\Omega=\frac{1-\beta\left(1-\delta\right)}{\alpha\beta\overline{Z}}$.
+
+Substituting this into the resource constraint (\ref{eq:Budget_constraint})
+yields:
+
+\begin{align*}
+\overline{C}+\overline{K} & =\overline{Z}\overline{K}^{\alpha}\overline{H}^{1-\alpha}+\left(1-\delta\right)\overline{K}\\
+\overline{C} & =\overline{Z}\overline{K}^{\alpha}\left[\Omega^{\frac{1}{1-\alpha}}\overline{K}\right]^{1-\alpha}-\delta\overline{K}\\
+ & =\left(\overline{Z}\Omega-\delta\right)\overline{K}
+\end{align*}
+
+Substituting the expressions for $\overline{H}$ and $\overline{C}$
+into the labor supply function (\ref{eq:Lab_supply}) and solving
+for $\overline{K}$ yields:
+
+\begin{align*}
+\overline{K} & =\left[\left(\frac{1-\alpha}{\chi}\overline{Z}\left[\overline{Z}\Omega-\delta\right]^{-\nu}\right)^{\eta}\Omega^{\frac{\alpha\eta+1}{\alpha-1}}\right]^{\frac{1}{1+\eta\nu}}
+\end{align*}
+
+\end{document}

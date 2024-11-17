@@ -3,6 +3,9 @@
 This is a 2-day Ph.D. workshop on the application of deep neural networks as a global solution method, held at the [MCC](https://www.mcc-berlin.net/index.html) 03.09-
 04.09.2024.
 
+## Model Additions by Sijmen Duineveld
+- RBC_noquad_trad: residuals computed using log(Ct) as policy of states [log(Kt),log(Zt)]. "noquad" refers to no quadrature, so it uses a point estimate for the future TFP level. In simulations stochastic shocks are included though. (This model can also be found in the repo https://github.com/saduineveld/Promes-python which solves two simple model with Time Iteration).
+
 
 ## Course Objectives:
 
