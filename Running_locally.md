@@ -17,6 +17,10 @@
 in HYDRA_OUTPUT: 
 tensorboard --logdir='bm1972/2024-10-28/11-50-30'
 
+## Post-processing on windows:
+```set USE_CONFIG_FROM_RUN_DIR=runs/bm1972/2024-09-03/13-13-03```
+```python post_process_bm1972.py STARTING_POINT=LATEST hydra.run.dir=%USE_CONFIG_FROM_RUN_DIR%```
+
 
 ## Creating environment DEQN_fork from yaml using conda
 conda env create -f DEQN_fork.yaml

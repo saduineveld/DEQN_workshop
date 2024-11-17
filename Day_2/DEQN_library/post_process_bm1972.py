@@ -20,6 +20,7 @@ Globals.POST_PROCESSING=True
 
 tf.get_logger().setLevel('CRITICAL')
 
+
 pd.set_option('display.max_columns', None)
 starting_policy = Parameters.policy(Parameters.starting_state)
 
@@ -33,9 +34,8 @@ if not Parameters.initialize_each_episode:
     print("Running a long simulation path")
     N_simulated_episode_length = 100 #Parameters.N_episode_length or 10000
     N_simulated_batch_size = 1 # Parameters.N_batch_size or 1
-        
-state_episode = tf.tile(tf.expand_dims(simulation_starting_state, axis = 0), [N_simulated_episode_length, 1, 1])
 
+state_episode = tf.tile(tf.expand_dims(simulation_starting_state, axis = 0), [N_simulated_episode_length, 1, 1])
 
 print("Running episode to get range of variables...")
 # we are not going to re-run this graph, so let's not trace it

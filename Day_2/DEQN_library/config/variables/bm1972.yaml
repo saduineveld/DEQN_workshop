@@ -3,11 +3,11 @@ states:
     init:
       distribution: uniform
       kwargs:
-        minval: 0.10
-        maxval: 1.0
+        minval: 0.16330 #
+        maxval: 0.2436 #
 
 policies:
-  - name: s_t  # Capital in the next period
+  - name: s_t  # Savings rate 
     # activation: tf.keras.activations.sigmoid
 
 

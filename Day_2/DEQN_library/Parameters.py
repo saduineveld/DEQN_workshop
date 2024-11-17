@@ -22,10 +22,7 @@ if os.getenv('OMPI_COMM_WORLD_SIZE'):
 else:
     setattr(sys.modules[__name__], "horovod", False)
 
-
-
 if "USE_CONFIG_FROM_RUN_DIR" in os.environ.keys():
-    print("Ok, its is TRUE")
     conf = OmegaConf.load(os.environ["USE_CONFIG_FROM_RUN_DIR"] + "/.hydra/config.yaml")
     conf_dict = OmegaConf.to_container(conf)
     if "run" not in conf_dict:
@@ -39,8 +36,7 @@ if "USE_CONFIG_FROM_RUN_DIR" in os.environ.keys():
     
     conf_new = OmegaConf.create(conf_dict)
     OmegaConf.save(config=conf_new, f="config_postprocess/config.yaml")
-else:
-    print("Ok, its is FALSE")
+
 
 #### Configuration setup
 @hydra.main(config_path=("config_postprocess" if "USE_CONFIG_FROM_RUN_DIR" in os.environ.keys() else "config"), config_name="config.yaml")

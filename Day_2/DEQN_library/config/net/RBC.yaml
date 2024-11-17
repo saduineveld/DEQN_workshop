@@ -11,5 +11,5 @@ layers:
       init_scale: 1.
   - output:
       type: dense
-      activation: sigmoid
+      activation: linear
       init_scale: 0.1
