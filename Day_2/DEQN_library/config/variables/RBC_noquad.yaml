@@ -18,18 +18,18 @@ states:
         stddev: 0.
 
 policies:
-  - name: lCt  # Consumption in logs
+  - name: st   # savings rate
+  - name: lHt  # Hours worked in logs
 
 
 definitions:
-#  - name: get_ss #get steady state
-  - name: get_lKn #capital next period (in logs)
-  - name: get_RHSt # "right-hand-side of Euler (but in period t!)
   - name: get_Kt  # exponent of lKt
   - name: get_Zt  # exponent lZt
-  - name: get_Ct  # exponent lCt
-  - name: get_marg_ut # marginal utility
-  - name: get_Ht # labour supply
+  - name: get_Ht  # exponent lHt
+  - name: get_lKn #capital next period (in logs)
+  - name: get_RHSt # "right-hand-side of Euler (but in period t!)
+  - name: get_Ct # consumption
+  - name: get_marg_ut # marginal utility of consumption
   - name: get_Yt  # Output
   - name: get_Rt # Marg. productivity of capital
 
