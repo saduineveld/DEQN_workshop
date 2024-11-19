@@ -103,7 +103,7 @@ starting_state = tf.reshape(tf.constant([
 # Simulate the economy for N_episode_length time periods
 simulation_starting_state = tf.tile(tf.expand_dims(
     starting_state, axis=0), [N_episode_length, 1, 1])
-
+tf.print("Shape of sim._starting_state",simulation_starting_state.shape)
 # --------------------------------------------------------------------------- #
 print("-" * terminal_size_col)
 print("Simulate the economy for one episode for {} years".format(
@@ -111,6 +111,8 @@ print("Simulate the economy for one episode for {} years".format(
 # --------------------------------------------------------------------------- #
 # Simulate for one state episode
 state_1episode = run_episode(simulation_starting_state)
+tf.print("Shape of state (1epi.)",state_1episode.shape)
+
 # Simulate for one policy episode
 policy_state_1episode = np.empty(
     shape=[N_episode_length, 1, N_policy_state], dtype=np.float32)

@@ -19,6 +19,12 @@ states:
 
 policies:
   - name: st   # savings rate
+    activation: tf.keras.activations.sigmoid
+    bounds:
+        lower: 0.0
+        penalty_lower: 1e-2
+        upper: 1.0
+        penalty_upper: 1e-2
   - name: lHt  # Hours worked in logs
 
 

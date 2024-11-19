@@ -1,20 +1,24 @@
 hydra:
   run:
-    dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} #runs/RBC/2024-11-17/07-51-09
+    dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} # runs/ramsey_stoch/2024-11-18/20-08-02
+    #
+    #runs/bm1972/2024-11-18/17-18-02
+        # runs/bm1972/2024-09-03/13-13-03
+    #dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} #
     #dir: 
     #dir: ../../../../OUTPUT_HYDRA/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
 defaults:
-  - constants: RBC
-  - net: RBC
-  - optimizer: RBC
-  - run: RBC
-  - variables: RBC
+  - constants: ramsey_stoch
+  - net: ramsey_stoch
+  - optimizer: ramsey_stoch
+  - run: ramsey_stoch
+  - variables: ramsey_stoch
 seed: 42 #42
 # can be NEW, LATEST, or a given checkpoint filename
 STARTING_POINT: LATEST
 CHECKPOINT_INTERVAL: 2
 MAX_TO_KEEP_NUMBER: 10
-MODEL_NAME: RBC
+MODEL_NAME: ramsey_stoch
 #False-> Simulation; True -> draw
 initialize_each_episode: True
 error_filename: error_file.txt
