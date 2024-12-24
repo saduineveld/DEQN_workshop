@@ -41,3 +41,5 @@ hydra-core (1.3.2)
 - conda install tensorflow==2.10
 - conda install hydra-core
 - conda install jupyter
+- conda install pandas
+- conda install matplotlib

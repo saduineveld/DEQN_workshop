@@ -1,11 +1,14 @@
 # To Do List
 
+## Solve RBC model with DEQN (no quadrature)
+- Check RBC files in DEQN format
+- plot (implicit) policy for lC as function of lK and lZ
+- Run deterministic simulation
+- Run stochastic simulation
+
 ## Test evaluation of policy function
 - BM: multiple simulations: save one file per variable (each path is a column or row)
 - RBC_noquad: save one file per variable (each path is a colum or row)
-
-## Solve RBC model with DEQN (no quadrature)
-- Make new RBC files for to DEQN format
 
 ## Add model description of bm1972
 
