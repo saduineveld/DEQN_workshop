@@ -10,5 +10,5 @@ constants:
     zss:      1
 
   # Initial states:
-    lK0:      2.9 
-    lZ0:      0       
+    lk0:      2.9 
+    lz0:      0       
