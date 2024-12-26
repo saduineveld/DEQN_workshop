@@ -34,9 +34,12 @@ definitions:
   - name: get_Ht  # exponent lHt
   - name: get_lKn #capital next period (in logs)
   - name: get_RHSt # "right-hand-side of Euler (but in period t!)
+  - name: res_labor #residual of labor market
   - name: get_Ct # consumption
   - name: get_marg_ut # marginal utility of consumption
+  - name: labor_disut # disutility of labor
   - name: get_Yt  # Output
+  - name: get_Wt  # Marg. productivity of labor
   - name: get_Rt # Marg. productivity of capital
 
 

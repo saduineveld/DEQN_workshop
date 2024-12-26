@@ -62,7 +62,7 @@ def get_Ht(state,policy_state):
     _Zt = get_Zt(state,policy_state)
     _Ct = get_Ct(state,policy_state)
 
-    _Ht = ((1-alpha/chi)*_Ct**-nu*_Zt*_Kt**alpha)**(eta/(1+alpha*eta))
+    _Ht = (((1-alpha)/chi)*_Ct**-nu*_Zt*_Kt**alpha)**(eta/(1+alpha*eta))
     return _Ht
 
 def get_Yt(state,policy_state): 

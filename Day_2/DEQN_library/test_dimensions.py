@@ -29,12 +29,13 @@ Globals.POST_PROCESSING=True
 # --------------------------------------------------------------------------- #
 # Simulation periods and batch size
 # --------------------------------------------------------------------------- #
+
 # Import equations
 Equations = importlib.import_module(Parameters.MODEL_NAME + ".Equations")
 
 # Number of state, policy and defined variables
-N_st = len(Parameters.states)  # Number of state variables
-N_ps = len(Parameters.policy_states)  # Number of policy variables
+num_st = len(Parameters.states)  # Number of state variables
+num_ps = len(Parameters.policy_states)  # Number of policy variables
 
 
 # Parameters:
@@ -47,51 +48,69 @@ def get_ss():
     kss = (tmp*omega**((alpha*eta+1)/(alpha-1)))**(1/(1+eta*nu))
     css = (omega-delta)*kss
     hss = omega**(1/(1-alpha))*kss
-    zss = tf.constant(1, dtype=tf.float32)
+    zss = 1
     return kss,css,hss,zss
 
 kss,css,hss,zss = get_ss()
-tf.print("kss (logs)",tf.math.log(kss))
-tf.print("css (logs)",tf.math.log(css))
-tf.print("hss (logs)",tf.math.log(hss))
 
-##### PLOT 1D policies #######
-lng = 2
-bb = 5 # = nodes = batches
-sim_state = tf.zeros([lng,bb,N_st]) # zeros in correct shape
+print("kss",kss)
+print("css",css)
+print("hss",hss)
+
+# Plot pol. in lk and lz:
+lng = 5
+bb = 15 # = nodes = batches
+#Create zeros [lng,bb,nn]
+sim_state = tf.zeros([lng,bb,num_st])
+print("Initial state",sim_state)
 
 # Set initial state (matrix):
 lk_dev = 0.2
 lk_bnds = [tf.math.log(kss)-lk_dev,tf.math.log(kss)+lk_dev]
 lk_A = tf.linspace(lk_bnds[0],lk_bnds[1],bb)
-lz_A = tf.fill([bb],tf.math.log(zss))
-ini_A = tf.stack([lk_A,lz_A], axis=1)
-sim_state_A = tf.tensor_scatter_nd_update(sim_state,[[0]], [ini_A])
-sim_state_A = run_episode(sim_state_A)
-#print("sim A",sim_state_A)
-
-# Plot policy:
-sim_state_A_rs = tf.reshape(sim_state_A, [lng * bb,N_st])
-print("sim A reshaped",sim_state_A_rs)
-ps_A_rs = Parameters.policy(sim_state_A_rs)
-print("ps A reshaped",ps_A_rs)
-
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-
-st_A = tf.reshape(ps_A_rs[0:bb,1],[-1])
+lz_A = tf.zeros(bb)
+#lk_plot = tf.reshape(lk_plot,[bb,1])
 print("lk_A",lk_A)
-print("st_A",st_A)
-plt.plot(lk_A,st_A)
-#plt.scatter(np.log(kss),np.log(css),c='red')
-plt.show()
-
+print("lz_A",lz_A)
 lz_fac  = 2.6 # multiple of stnd. deviation
 lz_std = tf.math.sqrt(sigma_z**2 / (1-rho_z**2) )
 z_nodes = 11
 lz_bnds = [-lz_fac*lz_std,lz_fac*lz_std,bb]
 lz_B = tf.linspace(lz_bnds[0],lz_bnds[1],bb)
 lk_B = tf.fill([bb],tf.math.log(kss))
+#lz_plot = tf.reshape(lz_plot,[bb,1])
+print("lk_B",lk_B)
+print("lz_B",lz_B)
+
+ini_A = tf.stack([lk_A,lz_A], axis=1)
+print("Initial state A",ini_A)
+
 ini_B = tf.stack([lk_B,lz_B], axis=1)
+
+
+# Replace first matrix ini sim_state:
+sim_state_A = tf.tensor_scatter_nd_update(sim_state,[[0]], [ini_A])
+print("State A",sim_state_A)
 sim_state_B = tf.tensor_scatter_nd_update(sim_state,[[0]], [ini_B])
-sim_state_B = run_episode(sim_state_B)
+print("State B",sim_state_B)
+
+ini = tf.constant([Parameters.lk0,Parameters.lz0])
+
+ini2 = tf.constant([5,3])
+print("Initial state",ini2)
+
+# Starting state (one value for each state variable only)
+starting_state = tf.reshape(tf.constant([
+    Parameters.lk0,Parameters.lz0]), shape=(1, N_state))
+
+# Simulate the economy for N_episode_length time periods
+simulation_starting_state = tf.tile(tf.expand_dims(
+    starting_state, axis=0), [N_episode_length, 1, 1])
+tf.print("Shape of sim._starting_state",simulation_starting_state.shape)
+
+
+simulation_starting_state_batch = tf.tile(tf.expand_dims(
+    starting_state, axis=0), [N_episode_length, N_sim_batch, 1])
+tf.print("Shape of sim._starting_state_batch",simulation_starting_state_batch.shape)
+tf.print("Starting_state",simulation_starting_state_batch)
 

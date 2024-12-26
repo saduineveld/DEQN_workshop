@@ -19,13 +19,12 @@ def equations(state, policy_state):
 
     loss_dict = {}
 
-    
     # Compute expecation of RHS of Euler equation
     RHS_Eul = E_t(lambda s, ps: Definitions.get_RHSt(s,ps) )
-
-
     #loss_dict['REE'] = RHS_Eul/Definitions.marg_ut(Ct) - 1
-    loss_dict['REE'] = RHS_Eul/Definitions.get_marg_ut(state,policy_state) - 1
+    loss_dict['EUL'] = RHS_Eul/Definitions.get_marg_ut(state,policy_state) - 1
+
+    loss_dict['LAB'] = Definitions.res_labor(state,policy_state)
 
     return loss_dict
 

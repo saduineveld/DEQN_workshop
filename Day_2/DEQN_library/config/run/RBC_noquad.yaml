@@ -3,5 +3,5 @@ N_sim_batch: 256
 N_episode_length: 1000
 N_epochs_per_episode: 1
 N_minibatch_size: 128
-N_episodes: 25
+N_episodes: 100
 keras_precision: float32
