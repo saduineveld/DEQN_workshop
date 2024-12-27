@@ -1,0 +1,94 @@
+%% LyX 2.4.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[british]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{esint}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{Standard RBC model}
+\maketitle
+
+\section{Model}\label{sec:Full-model-description}
+
+A standard Real Business Cycle (RBC) model with a representative agent
+including labour supply choice. The objective function of the agent
+is:
+
+\begin{align*}
+\max\: & E_{1}\underset{{\scriptstyle t=1}}{\overset{{\scriptstyle \infty}}{\sum}}\beta^{t-1} \frac{C_{t}^{1-\nu}}{1-\nu}
+\end{align*}
+
+\noindent where $C_{t}$ is period $t$ consumption, and $H_{t}$
+is period $t$ labor supply. The real budget constraint is:
+
+\begin{align}
+C_{t}+K_{t+1} & =Z_{t}K_{t}^{\alpha}+\left(1-\delta\right)K_{t}\label{eq:Budget_constraint}
+\end{align}
+
+\noindent where $K_{t}$ is the capital stock at the beginning of
+period $t$, and $\delta$ is the depreciation rate of capital. Total
+Factor Productivity (TFP) $Z_{t}$ evolves by an exogenous process:
+
+\begin{align}
+z_{t} & =\rho_{z}z_{t-1}+\sigma_{z}\epsilon_{t}\label{eq:TFP_process}
+\end{align}
+
+\noindent where $z_{t}=\log\left(Z_{t}\right)$, $\rho_{z}$ is the
+autocorrelation coefficient, and $\sigma_{z}$ is the standard deviation
+of the shocks. The shocks $\epsilon_{t}$ are standard normally distributed
+($\epsilon_{t}\sim\mathcal{N}\left(0,1\right)$).
+
+The optimization problem can be written with an infinite Lagrangian:
+
+$\mathcal{L}=E\overset{{\scriptscriptstyle \infty}}{\underset{{\scriptscriptstyle t=1}}{\sum}}\beta^{t}\left\{ \frac{C_{t}^{1-\nu}}{1-\nu}+\lambda_{t}\left[Z_{t}K_{t}^{\alpha}+\left(1-\delta\right)K_{t}-C_{t}-K_{t+1}\right]\right\} $
+
+\noindent where $\lambda_{t}$ is the shadow price of the budget constraint,
+and $K_{1}$ is given. Maximization of this Lagrangian with respect consumption $C_{t}$ and capital in next period
+$K_{t+1}$ yields the following First Order Conditions:
+
+\begin{align*}
+C_{t}^{-\nu} & =\lambda_{t}\\
+\lambda_{t} & =\beta\lambda_{t+1}\left[F_{k}\left(K_{t}\right)+1-\delta\right]
+\end{align*}
+
+Substituting out $\lambda$ gives:
+
+\begin{align}
+C_{t}^{-\nu} & =\beta E_{t}\left\{ C_{t+1}^{-\nu}\left[Z_{t+1}\alpha K_{t+1}^{\alpha-1}H_{t+1}^{1-\alpha}+1-\delta\right]\right\} \label{eq:Euler_eq}
+\end{align}
+
+
+
+
+\section{Steady state}\label{sec:RBC_steady-state}
+
+To derive the analytical steady state we start with the Euler equation
+(\ref{eq:Euler_eq}):
+
+\begin{align*}
+\overline{C}^{-\nu} & =\beta\left\{ \overline{C}^{-\nu}\left[\overline{Z}\alpha\overline{K}^{\alpha-1}+1-\delta\right]\right\} \\
+\frac{1-\beta\left(1-\delta\right)}{\overline{Z}\alpha\beta} & = \overline{K}^{\alpha-1} \\
+\overline{K} & = \Omega^{\frac{1}{\alpha-1}}
+\end{align*}
+
+\noindent with $\Omega=\frac{1-\beta\left(1-\delta\right)}{\alpha\beta\overline{Z}}$.
+
+Substituting this into the resource constraint (\ref{eq:Budget_constraint})
+yields:
+
+\begin{align*}
+\overline{C}+\overline{K} & =\overline{Z}\overline{K}^{\alpha}+\left(1-\delta\right)\overline{K}\\
+\overline{C} & =\overline{Z}\overline{K}^{\alpha}-\delta\overline{K}\\
+\end{align*}
+
+\end{document}

@@ -1,0 +1,26 @@
+# State variables
+states:
+  # Endogenous state variables:
+  - name: Kt  # Capital stock in period t
+    init:
+      distribution: uniform
+      kwargs:
+        minval: 24.56 #
+        maxval: 36.84 #
+
+policies:
+  - name: st  # savings rate
+
+definitions:
+#  - name: get_ss #get steady state
+  - name: get_ss
+  - name: get_Kn #capital next period
+  - name: get_RHSt # "right-hand-side of Euler (but in period t!)
+  - name: get_Ct  # consumption
+  - name: get_It  # investment
+  - name: get_marg_ut # marginal utility
+  - name: get_Yt  # Output
+  - name: get_Rt # Marg. productivity of capital
+
+
+
