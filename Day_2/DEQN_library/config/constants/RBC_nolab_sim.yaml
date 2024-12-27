@@ -1,0 +1,11 @@
+constants:
+    alpha:    0.36
+    beta:     0.985
+    delta:    0.025
+    nu:       2
+    rho_z:    0.95
+    sigma_z:  0.01
+    k_lb:     24.56 #0.8*Kss
+    k_ub:     36.84 #1.2*Kss   
+    z_lb:     0.92 #2.6*std [exp(-2.6*sqrt(sigma^2/(1-rho^2))) ]
+    z_ub:     1.087 #2.6*std [ exp(+2.6*sqrt(sigma^2/(1-rho^2))) ]

@@ -1,0 +1,35 @@
+# State variables
+states:
+  # Endogenous state variables:
+  - name: lKt  # Capital stock in period t
+    init:
+      distribution: truncated_normal
+      kwargs:
+        mean: 3.4243
+        stddev: 0.
+
+  - name: lZt  # TFP in period t
+    init:
+      distribution: truncated_normal
+      kwargs:
+        mean: 0
+        stddev: 0.
+
+policies:
+  - name: st  # savings rate
+
+definitions:
+#  - name: get_ss #get steady state
+  - name: get_Kt  # TFP
+  - name: get_Zt  # TFP
+  - name: get_lKn #capital next period
+  - name: get_RHSt # "right-hand-side of Euler (but in period t!)
+  - name: get_Ct  # consumption
+  - name: get_It  # investment
+
+  - name: get_marg_ut # marginal utility
+  - name: get_Yt  # Output
+  - name: get_Rt # Marg. productivity of capital
+
+
+

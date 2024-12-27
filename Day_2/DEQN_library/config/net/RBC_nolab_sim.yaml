@@ -1,0 +1,15 @@
+layers:
+  - hidden:
+      units: 25
+      type: dense
+      activation: softplus
+      init_scale: 0.25
+  - hidden:
+      units: 25
+      type: dense
+      activation: softplus
+      init_scale: 0.25
+  - output:
+      type: dense
+      activation: sigmoid
+      init_scale: 0.25

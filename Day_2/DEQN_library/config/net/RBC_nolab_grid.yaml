@@ -1,14 +1,14 @@
 layers:
   - hidden:
-      units: 50
+      units: 25
       type: dense
-      activation: relu
-      init_scale: 1.
+      activation: softplus
+      init_scale: 1
   - hidden:
-      units: 50
+      units: 25
       type: dense
-      activation: relu
-      init_scale: 1.
+      activation: softplus
+      init_scale: 1
   - output:
       type: dense
       activation: sigmoid

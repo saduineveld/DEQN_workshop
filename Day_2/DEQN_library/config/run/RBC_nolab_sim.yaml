@@ -1,0 +1,6 @@
+N_sim_batch: 512
+N_episode_length: 1024
+N_epochs_per_episode: 1
+N_minibatch_size: 512
+N_episodes: 20
+keras_precision: float32
