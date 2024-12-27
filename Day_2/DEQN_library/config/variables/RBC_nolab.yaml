@@ -7,6 +7,12 @@ states:
       kwargs:
         minval: 24.56 #
         maxval: 36.84 #
+  - name: Zt  # TFP in period t
+    init:
+      distribution: uniform
+      kwargs:
+        minval: 0.92 #
+        maxval: 1.087 #
 
 policies:
   - name: st  # savings rate

@@ -1,18 +1,6 @@
 hydra:
   run:
-    dir: runs/RBC_nolab_det/2024-12-27/00-00-47
-        #runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
-    #runs/RBC_noquad/2024-12-26/16-07-19
-    # 
-    # runs/RBC_noquad/2024-12-26/XX-XX-XX
-    # runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
-    #runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
-    #runs/bm1972/2024-11-17/07-51-09
-    #runs/bm1972/2024-11-18/17-18-02
-    #runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} # runs/bm1972/2024-11-18/20-08-02
-            # runs/bm1972/2024-09-03/13-13-03
-    #dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} #
-    #dir: 
+    dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} # runs/RBC_nolab_det/2024-12-27/13-47-33 # 
     #dir: ../../../../OUTPUT_HYDRA/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
 defaults:
   - constants: RBC_nolab_det

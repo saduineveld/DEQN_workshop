@@ -9,7 +9,7 @@ import Parameters
 # --------------------------------------------------------------------------- #
 # Extract parameters
 # --------------------------------------------------------------------------- #
-
+rho_z, sigma_z  = Parameters.rho_z, Parameters.sigma_z
 
 # Probability of a dummy shock
 shock_probs = tf.constant([1.0])  # Dummy probability
@@ -40,9 +40,9 @@ def total_step_spec_shock(prev_state, policy_state, shock_index):
 
 
 def AR_step(prev_state):
-    """AR(1) shock"""
+    """AR(1) process of Zt."""
     _ar_step = tf.zeros_like(prev_state)  # Initialization
-
+    _ar_step = State.update(_ar_step, 'Zt', State.Zt(prev_state)**rho_z)
     return _ar_step
 
 
