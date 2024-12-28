@@ -56,8 +56,8 @@ def get_RHSt(state, policy_state):
 def res_labor(state,policy_state):
     _lambda = get_marg_ut(state,policy_state)
     _Wt     = get_Wt(state,policy_state)
-    _ls_eq     = labor_disut(state,policy_state)
-    _res = _lambda*_Wt/_ls_eq - 1
+    _ls_eq  = labor_disut(state,policy_state)
+    _res    = _lambda*_Wt/_ls_eq - 1
     return _res
 
 ### AUXILIARY ###
@@ -95,8 +95,9 @@ def get_Wt(state,policy_state):
 
 def get_Rt(state,policy_state): 
     _Kt = get_Kt(state,policy_state)
-    _Yt = get_Yt(state,policy_state)
-
-    _Rt = alpha*_Yt/_Kt
+    _Zt = get_Zt(state,policy_state)
+    _Ht = get_Ht(state,policy_state)
+    
+    _Rt = alpha*_Zt*_Kt**(alpha-1)*_Ht**(1-alpha)
     return _Rt
 

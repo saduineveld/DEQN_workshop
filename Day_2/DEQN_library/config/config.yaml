@@ -1,19 +1,19 @@
 hydra:
   run:
-    dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} # runs/RBC_nolab/2024-12-27/19-56-06 #  # 
+    dir: runs/RBC_noquad/2024-12-28/02-21-14 # runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} #  
     #dir: ../../../../OUTPUT_HYDRA/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
 defaults:
-  - constants:  RBC_nolab_sim
-  - net:        RBC_nolab_sim
-  - optimizer:  RBC_nolab_sim
-  - run:        RBC_nolab_sim
-  - variables:  RBC_nolab_sim
+  - constants:  RBC_noquad
+  - net:        RBC_noquad
+  - optimizer:  RBC_noquad
+  - run:        RBC_noquad
+  - variables:  RBC_noquad
 seed: 42 #42
 # can be NEW, LATEST, or a given checkpoint filename
 STARTING_POINT: LATEST
 CHECKPOINT_INTERVAL: 2
 MAX_TO_KEEP_NUMBER: 10
-MODEL_NAME:     RBC_nolab_sim
+MODEL_NAME:     RBC_noquad
 #False-> Simulation; True -> draw
 initialize_each_episode: True
 error_filename: error_file.txt

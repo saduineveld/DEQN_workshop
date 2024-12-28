@@ -21,7 +21,8 @@ def get_Zt(state,policy_state):
 def get_lKn(state, policy_state):
     """ Capital in next period, given state & policy """
     _It = get_It(state,policy_state)
-    _lKn = tf.math.log(_It + (1-delta)*State.Kt(state))
+    _Kt = get_Kt(state,policy_state)
+    _lKn = tf.math.log(_It + (1-delta)*_Kt)
     return _lKn
 
 # RHS of Euler in period t(!!)
