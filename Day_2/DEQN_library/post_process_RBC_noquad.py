@@ -68,6 +68,7 @@ lk_bnds = [tf.math.log(kss)-lk_dev,tf.math.log(kss)+lk_dev]
 lk_A = tf.linspace(lk_bnds[0],lk_bnds[1],bb)
 lz_A = tf.fill([bb],tf.math.log(zss))
 ini_A = tf.stack([lk_A,lz_A], axis=1)
+
 sim_state_A = tf.tensor_scatter_nd_update(sim_state,[[0]], [ini_A])
 sim_state_A = run_episode(sim_state_A)
 #print("sim A",sim_state_A)

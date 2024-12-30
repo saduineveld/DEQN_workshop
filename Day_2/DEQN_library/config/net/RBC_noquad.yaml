@@ -1,16 +1,16 @@
 layers:
   - hidden:
-      units: 50
+      units: 100
       type: dense
-      activation: softplus
-      init_scale: 0.5
+      activation: relu
+      init_scale: 0.1
   - hidden:
-      units: 50
+      units: 100
       type: dense
-      activation: softplus
-      init_scale: 0.5
+      activation: relu
+      init_scale: 0.1
 
   - output:
       type: dense
       activation: linear
-      init_scale: 0.25
+      init_scale: 0.1

@@ -1,7 +1,7 @@
 hydra:
   run:
-    dir: runs/RBC_noquad/2024-12-28/02-21-14 # runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} #  
-    #dir: ../../../../OUTPUT_HYDRA/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S} # runs/RBC_noquad/2024-12-30/16-12-39 #    
+
 defaults:
   - constants:  RBC_noquad
   - net:        RBC_noquad

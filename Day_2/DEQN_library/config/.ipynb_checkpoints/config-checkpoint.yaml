@@ -3,17 +3,17 @@ hydra:
     dir: runs/${MODEL_NAME}/${now:%Y-%m-%d}/${now:%H-%M-%S}
     # dir: runs/uq_ecs_1shock_nolearning/2023-08-02/14-16-37
 defaults:
-  - constants: RBC
-  - net: RBC
-  - optimizer: RBC
-  - run: RBC
-  - variables: RBC
+  - constants: RBC_noquad
+  - net: RBC_noquad
+  - optimizer: RBC_noquad
+  - run: RBC_noquad
+  - variables: RBC_noquad
 seed: 42 #42
 # can be NEW, LATEST, or a given checkpoint filename
 STARTING_POINT: LATEST
 CHECKPOINT_INTERVAL: 2
 MAX_TO_KEEP_NUMBER: 10
-MODEL_NAME: RBC
+MODEL_NAME: RBC_noquad
 #False-> Simulation; True -> draw
 initialize_each_episode: True
 error_filename: error_file.txt
